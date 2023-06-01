@@ -15,7 +15,7 @@ class BaseRecorder:
         self.source_name = source_name
 
     def adjust_for_noise(self, device_name, msg):
-        print(f"[INFO] Adjusting for ambient noise from {device_name}. " + msg)
+        print(f"[INFO] Adjusting for ambient noise from {device_name}. {msg}")
         with self.source:
             self.recorder.adjust_for_ambient_noise(self.source)
         print(f"[INFO] Completed ambient noise adjustment for {device_name}.")

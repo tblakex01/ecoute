@@ -4,15 +4,12 @@ import os
 import torch
 
 def get_model(use_api):
-    if use_api:
-        return APIWhisperTranscriber()
-    else:
-        return WhisperTranscriber()
+    return APIWhisperTranscriber() if use_api else WhisperTranscriber()
 
 class WhisperTranscriber:
     def __init__(self):
         self.audio_model = whisper.load_model(os.path.join(os.getcwd(), 'tiny.en.pt'))
-        print(f"[INFO] Whisper using GPU: " + str(torch.cuda.is_available()))
+        print(f"[INFO] Whisper using GPU: {str(torch.cuda.is_available())}")
 
     def get_transcription(self, wav_file_path):
         try:
